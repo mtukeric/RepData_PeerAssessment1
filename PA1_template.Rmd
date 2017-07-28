@@ -25,9 +25,7 @@ stepsPerDayInterval <- as.data.frame(data)
 1. Make a histogram of the total number of steps taken each day
 ```{r}
 stepsPerDaySum <- aggregate(steps ~ date, data = stepsPerDayInterval, FUN=sum, na.action = na.omit)
-renderPlot({
 hist(stepsPerDaySum$steps, breaks=20, main = "Sum of steps per day histogram")
-})
 ```
 
 2. What is mean and median total number of steps taken per day?
@@ -41,9 +39,7 @@ median(stepsPerDaySum$steps)
 1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 ```{r}
 stepsPerIntervalAvg <- aggregate(steps ~ interval, data = stepsPerDayInterval, FUN=mean, na.action = na.omit)
-renderPlot({
 plot(stepsPerIntervalAvg, type="l",main="Steps per interval")
-})
 ```
 
 2.Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -71,10 +67,8 @@ stepsPerDaySumWOMissing <- aggregate(steps ~ date, data = stepsPerDayIntervalWOM
 
 4.Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r}
-renderPlot({
 hist(stepsPerDaySum$steps, breaks=20, main = "w missing values")
 hist(stepsPerDaySumWOMissing$steps, breaks=20, main = "w/o missing values")
-})
 mean(stepsPerDaySumWOMissing$steps)
 median(stepsPerDaySumWOMissing$steps)
 ```
@@ -90,8 +84,6 @@ stepsPerDayIntervalWOMissing <- transform(stepsPerDayIntervalWOMissing, week = i
 ```{r}
 stepsPerIntervalWeekWOMissing <- with(stepsPerDayIntervalWOMissing,aggregate(steps ~ interval + week, FUN=mean))
 library(lattice)
-renderPlot({
 with(stepsPerIntervalWeekWOMissing, xyplot(steps~interval|factor(week), type='l',layout=c(1,2), xlab='Interval',ylab='Steps'))
-})
 ```
 
