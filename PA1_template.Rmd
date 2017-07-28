@@ -2,7 +2,7 @@
 title: "RepData_PeerAssigment1"
 author: "Mladen Tukeric"
 date: '25 srpnja 2017 '
-output: html_document
+output: md_document
 ---
 
 Loading data and preprocessing the data
